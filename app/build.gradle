@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -54,5 +55,7 @@ dependencies {
     implementation 'com.robinhood.spark:spark:1.2.0'
     // Swipe refresh ->
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.2.0-alpha01'
+    //Glide ->
+    implementation 'com.github.bumptech.glide:glide:4.16.0'
 
 }
