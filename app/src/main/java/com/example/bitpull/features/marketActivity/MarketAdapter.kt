@@ -22,36 +22,40 @@ class MarketAdapter(private val data:ArrayList<CoinsData.Data> ,
 
         @SuppressLint( "SetTextI18n")
         fun bindViews(dataCoin: CoinsData.Data){
-            binding.txtCoinName.text = dataCoin.coinInfo.fullName
-            binding.txtPrice.text = "$" + dataCoin.dISPLAY.uSD.pRICE
 
-            val taghir = dataCoin.rAW.uSD.cHANGE24HOUR
+            if (dataCoin.dISPLAY!=null && dataCoin.rAW != null){
 
-            if(taghir > 0){
-                binding.txtTaghir.setTextColor(ContextCompat.getColor(binding.root.context , R.color.colorGain))
-                binding.txtTaghir.text = dataCoin.rAW.uSD.cHANGE24HOUR.toString().substring(0,4) + "%"
-            }
-            else if(taghir < 0){
-                binding.txtTaghir.setTextColor(ContextCompat.getColor(binding.root.context , R.color.colorLoss))
-                binding.txtTaghir.text = dataCoin.rAW.uSD.cHANGE24HOUR.toString().substring(0,5) + "%"
-            }
-            else {
-                binding.txtTaghir.text = "0%"
-            }
+                binding.txtCoinName.text = dataCoin.coinInfo.fullName
+                binding.txtPrice.text = "$" + dataCoin.dISPLAY.uSD.pRICE
 
-            val marketCap = dataCoin.rAW.uSD.mKTCAP / 1000000000
-            val indexDot = marketCap.toString().indexOf('.')
-            binding.txtMarketCap.text = "$" + marketCap.toString().substring(0 , indexDot + 3) + "B"
+                val taghir = dataCoin.rAW.uSD.cHANGE24HOUR
+                if(taghir > 0){
+                    binding.txtTaghir.setTextColor(ContextCompat.getColor(binding.root.context , R.color.colorGain))
+                    binding.txtTaghir.text = dataCoin.rAW.uSD.cHANGE24HOUR.toString().substring(0,4) + "%"
+                }
+                else if(taghir < 0){
+                    binding.txtTaghir.setTextColor(ContextCompat.getColor(binding.root.context , R.color.colorLoss))
+                    binding.txtTaghir.text = dataCoin.rAW.uSD.cHANGE24HOUR.toString().substring(0,5) + "%"
+                }
+                else {
+                    binding.txtTaghir.text = "0%"
+                }
+
+                val marketCap = dataCoin.rAW.uSD.mKTCAP / 1000000000
+                val indexDot = marketCap.toString().indexOf('.')
+                binding.txtMarketCap.text = "$" + marketCap.toString().substring(0 , indexDot + 3) + "B"
 
 
 
-            Glide
-                .with(itemView)
-                .load(BASE_URL_IMAGE + dataCoin.coinInfo.imageUrl)
-                .into( binding.imgItem )
+                Glide
+                    .with(itemView)
+                    .load(BASE_URL_IMAGE + dataCoin.coinInfo.imageUrl)
+                    .into( binding.imgItem )
 
-            itemView.setOnClickListener {
-                recyclerCallback.onCoinItemClicked( dataCoin )
+                itemView.setOnClickListener {
+                    recyclerCallback.onCoinItemClicked( dataCoin )
+                }
+
             }
 
         }
