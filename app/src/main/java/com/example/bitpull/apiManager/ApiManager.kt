@@ -31,7 +31,6 @@ class ApiManager {
             override fun onResponse(call: Call<NewsData>, response: Response<NewsData>) {
 
                 val data = response.body()!!
-
                 val dataToSend: ArrayList<Pair<String, String>> = arrayListOf()
                 data.data.forEach {
                     dataToSend.add(Pair(it.title, it.url))
@@ -44,7 +43,6 @@ class ApiManager {
             override fun onFailure(call: Call<NewsData>, t: Throwable) {
 
                 apiCallback.onError(t.message!!)
-
             }
 
         })

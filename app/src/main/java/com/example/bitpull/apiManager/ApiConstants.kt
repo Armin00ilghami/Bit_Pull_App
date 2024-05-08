@@ -4,8 +4,7 @@ package com.example.bitpull.apiManager
 
 const val BASE_URL = "https://min-api.cryptocompare.com/data/"
 const val BASE_URL_IMAGE = "https://www.cryptocompare.com"
-const val API_KEY =
-    "authorization: Apikey 98ac91fe0448e6e73045b9ac770b319602951c730179f0dee37ed6d3c58b767f"
+const val API_KEY = "authorization: Apikey {00486c69a2d4f1416880284b4a1ec90218f5c502c5b15c9827de69242869cfa8}"
 const val BASE_URL_TWITTER = "https://twitter.com/"
 
 // Chart Data ->

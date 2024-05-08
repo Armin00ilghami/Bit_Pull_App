@@ -1,10 +1,9 @@
 package com.example.bitpull.apiManager.model
 
+
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import java.math.BigDecimal
-import java.math.BigInteger
 
 data class CoinsData(
     @SerializedName("Data")

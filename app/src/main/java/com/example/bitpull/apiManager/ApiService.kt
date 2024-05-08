@@ -8,7 +8,6 @@ import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
 import retrofit2.http.Query
-import java.time.Period
 
 interface ApiService {
 
@@ -19,7 +18,7 @@ interface ApiService {
     ) :Call<NewsData>
 
     @Headers(API_KEY)
-    @GET("top/totalvofull")
+    @GET("top/totalvolfull")
     fun getTopCoins(
         @Query("tsym") to_symbol :String = "USD" ,
         @Query("limit") limit_data :Int = 20

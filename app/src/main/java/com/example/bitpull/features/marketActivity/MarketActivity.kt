@@ -96,10 +96,11 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
 
     }
 
-    private fun cleanData(data: List<CoinsData.Data>) : List<CoinsData.Data>{
+    private fun cleanData( data: List<CoinsData.Data> ) : List<CoinsData.Data>{
         val newData = mutableListOf<CoinsData.Data>()
+       // val newData = data.toMutableList()
         data.forEach {
-            if (it.rAW != null || it.dISPLAY != null){
+            if ( it.rAW !=null || it.dISPLAY != null ){
                 newData.add(it)
             }
         }
@@ -110,7 +111,9 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
 
         apiManager.getCoinsList(object : ApiManager.ApiCallback<List<CoinsData.Data>> {
             override fun onSuccess(data: List<CoinsData.Data>) {
-                showDataInRecycler( cleanData(data) )
+
+                showDataInRecycler(cleanData(data))
+
             }
 
             override fun onError(errorMessage: String) {
@@ -170,9 +173,8 @@ class MarketActivity : AppCompatActivity(), MarketAdapter.RecyclerCallback {
         if (isFirstRun) {
 
             val dialog = AlertDialog.Builder(this)
-            dialog.setMessage("Welcome Baby!")
+            dialog.setMessage(" WELCOME TO MARKET :) ")
             dialog.show()
-
             shared.edit().putBoolean("isFirstRun" , false).apply()
         }
 
